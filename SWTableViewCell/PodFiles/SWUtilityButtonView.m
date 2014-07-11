@@ -75,12 +75,35 @@
     {
         NSUInteger utilityButtonsCounter = 0;
         UIView *precedingView = nil;
+
+
         
         for (UIButton *button in _utilityButtons)
         {
-            [self addSubview:button];
-            button.translatesAutoresizingMaskIntoConstraints = NO;
+            UILabel *label = [[UILabel alloc] init];
+            label.text = @"Title";
+            label.textAlignment = NSTextAlignmentCenter;
+            label.numberOfLines = 1;
+            label.minimumScaleFactor = 8./label.font.pointSize;
+            label.adjustsFontSizeToFitWidth = YES;
             
+            UIFont *font = [UIFont mediumUnitProFontOfSize:11.f];
+            
+            label.backgroundColor = [UIColor clearColor];
+            label.font = font;
+            label.textColor = [UIColor colorWithWhite:1 alpha:.9f];
+            label.highlightedTextColor = [UIColor whiteColor];
+
+            
+            
+            [self addSubview:button];
+            [self addSubview:label];
+            
+            button.translatesAutoresizingMaskIntoConstraints = NO;
+            label.translatesAutoresizingMaskIntoConstraints = NO;
+            
+
+
             if (!precedingView)
             {
                 // First button; pin it to the left edge.
@@ -88,6 +111,11 @@
                                                                              options:0L
                                                                              metrics:nil
                                                                                views:NSDictionaryOfVariableBindings(button)]];
+                
+                [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[label(==button)]"
+                                                                                    options:0
+                                                                                    metrics:nil
+                                                                                      views:NSDictionaryOfVariableBindings(label, button)]];
             }
             else
             {
@@ -96,12 +124,25 @@
                                                                              options:0L
                                                                              metrics:nil
                                                                                views:NSDictionaryOfVariableBindings(precedingView, button)]];
+                
+                [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[precedingView][label(==precedingView)]"
+                                                                             options:0
+                                                                             metrics:nil
+                                                                               views:NSDictionaryOfVariableBindings(precedingView, label)]];
+                
             }
             
             [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[button]|"
                                                                          options:0L
                                                                          metrics:nil
                                                                            views:NSDictionaryOfVariableBindings(button)]];
+            
+            
+            [self addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-20-|"
+                                                                                options:0
+                                                                                metrics:nil
+                                                                                  views:NSDictionaryOfVariableBindings(button,label)]];
+            
             
             
             SWUtilityButtonTapGestureRecognizer *utilityButtonTapGestureRecognizer = [[SWUtilityButtonTapGestureRecognizer alloc] initWithTarget:_parentCell action:_utilityButtonSelector];
