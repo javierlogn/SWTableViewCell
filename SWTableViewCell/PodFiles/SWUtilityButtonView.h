@@ -17,6 +17,7 @@
 - (id)initWithFrame:(CGRect)frame utilityButtons:(NSArray *)utilityButtons parentCell:(SWTableViewCell *)parentCell utilityButtonSelector:(SEL)utilityButtonSelector;
 
 @property (nonatomic, weak, readonly) SWTableViewCell *parentCell;
+@property (nonatomic, copy) NSArray *utilityButtonsLabels;
 @property (nonatomic, copy) NSArray *utilityButtons;
 @property (nonatomic, assign) SEL utilityButtonSelector;
 

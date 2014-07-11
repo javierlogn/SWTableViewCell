@@ -220,6 +220,11 @@ static NSString * const kTableViewPanState = @"state";
     }
 }
 
+
+- (void)setLeftUtilityButtonsLabels:(NSArray *)utitilyButtonsLabels {
+    self.leftUtilityButtonsView.utilityButtonsLabels = utitilyButtonsLabels;
+}
+
 - (void)setLeftUtilityButtons:(NSArray *)leftUtilityButtons
 {
     if (![_leftUtilityButtons sw_isEqualToButtons:leftUtilityButtons]) {
@@ -238,6 +243,11 @@ static NSString * const kTableViewPanState = @"state";
     [self.leftUtilityButtonsView setUtilityButtons:leftUtilityButtons WithButtonWidth:width];
     
     [self layoutIfNeeded];
+}
+
+
+- (void)setRightUtilityButtonsLabels:(NSArray *)utitilyButtonsLabels {
+    self.rightUtilityButtonsView.utilityButtonsLabels = utitilyButtonsLabels;
 }
 
 - (void)setRightUtilityButtons:(NSArray *)rightUtilityButtons

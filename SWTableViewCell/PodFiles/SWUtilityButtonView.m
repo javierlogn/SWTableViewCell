@@ -80,8 +80,14 @@
         
         for (UIButton *button in _utilityButtons)
         {
+            NSInteger index = [_utilityButtons indexOfObject:button];
             UILabel *label = [[UILabel alloc] init];
-            label.text = @"Title";
+            
+            if(self.utilityButtonsLabels && [self.utilityButtonsLabels objectAtIndex:index]) {
+                label  = [self.utilityButtonsLabels objectAtIndex:index];
+            }
+            
+            
             label.textAlignment = NSTextAlignmentCenter;
             label.numberOfLines = 1;
             label.minimumScaleFactor = 8./label.font.pointSize;
