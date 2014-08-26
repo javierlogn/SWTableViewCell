@@ -144,7 +144,7 @@
                                                                            views:NSDictionaryOfVariableBindings(button)]];
             
             
-            [self addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-20-|"
+            [self addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-10-|"
                                                                                 options:0
                                                                                 metrics:nil
                                                                                   views:NSDictionaryOfVariableBindings(button,label)]];
