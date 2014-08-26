@@ -101,15 +101,12 @@
             label.highlightedTextColor = [UIColor whiteColor];
 
             
-            
             [self addSubview:button];
             [self addSubview:label];
             
             button.translatesAutoresizingMaskIntoConstraints = NO;
             label.translatesAutoresizingMaskIntoConstraints = NO;
             
-
-
             if (!precedingView)
             {
                 // First button; pin it to the left edge.
@@ -144,10 +141,10 @@
                                                                            views:NSDictionaryOfVariableBindings(button)]];
             
             
-            [self addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-10-|"
+            [self addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-50-[label]|"
                                                                                 options:0
                                                                                 metrics:nil
-                                                                                  views:NSDictionaryOfVariableBindings(button,label)]];
+                                                                                  views:NSDictionaryOfVariableBindings(label)]];
             
             
             
